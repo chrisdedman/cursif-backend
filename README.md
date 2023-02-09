@@ -36,9 +36,12 @@ export DATABASE_PASSWORD=<your database password>
 
 ### Start the application:
 Start Cursif with `mix phx.server` or inside IEx with `iex -S mix phx.server` (recommended for development). You can, now, consume the API from `localhost:4000/api`.
-You can test queries at [`localhost:4000/graphql`](http://localhost:4000/graphql)
+You can test queries at [`localhost:4000/graphiql`](http://localhost:4000/graphiql)
 
 > To monitor the application, you can access the dashboard at [`localhost:4000/dashboard`](http://localhost:4000/dashboard) from your browser. 
+
+#### Troubleshooting
+If the application fails to load the environment variable, execute `source .env` from the root directory
 
 ## Resources
   

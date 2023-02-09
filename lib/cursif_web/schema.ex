@@ -4,12 +4,24 @@ defmodule CursifWeb.Schema do
   """
 
   use Absinthe.Schema
-  alias CursifWeb.Schema.{UserTypes}
+  alias CursifWeb.Schema.AccountTypes
 
-  import_types(UserTypes)
+  import_types(AccountTypes)
 
   query do
-    import_fields(:get_users)
+    import_fields(:list_users)
     import_fields(:get_user)
+    import_fields(:get_me)
   end
+
+  mutation do
+    import_fields(:login_mutation)
+    import_fields(:register_mutation)
+  end
+
+  def middleware(middleware, _field, %{identifier: :mutation}) do
+    middleware ++ [CursifWeb.Middlewares.HandleChangesetErrors]
+  end
+
+  def middleware(middleware, _field, _object), do: middleware
 end
